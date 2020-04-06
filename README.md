@@ -12,7 +12,7 @@ Hadoop programming on Scala, the version i used of Hadoop component are more hig
               no effect using the spark shell to link Hive with same machine  
               https://www.cnblogs.com/fbiswt/p/11798514.html   
   
-  MySQL:  8.0.18    
+  MySQL:  8.0.18  
   
   重点：  
     Hadoop:   
