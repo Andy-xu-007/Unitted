@@ -1,6 +1,5 @@
 package Spark.Kafka
 
-import java.io
 
 import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord}
 import org.apache.kafka.common.serialization.StringDeserializer
