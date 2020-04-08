@@ -12,7 +12,7 @@ object test {
       .map((_,1))
       .reduceByKey(_+_, 1)
       .sortBy(_._2, false)
-      .saveAsTextFile(args(0))
+      .saveAsTextFile(args(1))
 
     sc.stop()
   }
