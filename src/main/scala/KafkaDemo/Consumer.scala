@@ -12,7 +12,7 @@ object Consumer {
     // 创建kafka消费者的配置信息
     val props = new Properties()
     //1，指定kafka服务器//指定kafka服务器
-    props.put("bootstrap.servers", "namenode:9092")
+    props.put("bootstrap.servers", "namenode:9092, node1:9092, node2:9092")
     //2，消费组ID是test，控制台是默认分配的
     // 并非完全必需，它指定了消费者属于哪一个群组，但是创建不属于任何一个群组的消费者并没有问题
     props.put("group.id", "test")

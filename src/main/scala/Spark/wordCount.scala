@@ -13,7 +13,7 @@ object wordCount {
 
     // 读取一个文件
     val line: RDD[String] = sc.textFile("E:\\bigDataDoc\\data\\word.txt")
-    line.sample()
+
     // val line1 = sc.textFile(args(0))  // 打包到集群的时候，动态的传进来
 
     // 压平 => 元祖 => 按K聚合

@@ -1,0 +1,44 @@
+1540934156385|{
+"ap": "gmall",
+"cm": {
+"uid": "1234",
+"vc": "2",
+"vn": "1.0",
+"la": "EN",
+"sr": "",
+"os": "7.1.1",
+"ar": "CN",
+"md": "BBB100-1",
+"ba": "blackberry",
+"sv": "V2.2.1",
+"g": "abc@gmail.com",
+"hw": "1620x1080",
+"t": "1506047606608",
+"nw": "WIFI",
+"ln": 0
+},
+"et": [
+{
+"ett": "1506047605364",
+"en": "display",
+"kv": {
+"goodsid": "236",
+"action": "1",
+"extend1": "1",
+"place": "2",
+"category": "75"
+}
+},{
+"ett": "1552352626835",
+"en": "active_background",
+"kv": {
+"active_source": "1"
+}
+}
+]
+}
+}
+}
+
+
+

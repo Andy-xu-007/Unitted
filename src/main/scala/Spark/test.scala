@@ -11,7 +11,7 @@ object test {
       .flatMap(_.split(" "))
       .map((_,1))
       .reduceByKey(_+_, 1)
-      .sortBy(_._2, false)
+      .sortBy(_._2, ascending = false)
       .saveAsTextFile(args(1))
 
     sc.stop()

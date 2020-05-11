@@ -52,7 +52,7 @@ object KafkaStreaming {
 //      "schema.registry.url" -> "namenode:8081",
       "key.deserializer" -> classOf[StringDeserializer],
       //值是avro数据，需要通过KafkaAvroDeserializer反序列化
-      "value.deserializer" -> classOf[StringDeserializer],
+      "value.deserializer" -> classOf[StringDeserializer]
     )
 
     // 读取Kafka数据创建DStreaming, kafka010版本的API
@@ -62,6 +62,10 @@ object KafkaStreaming {
       PreferConsistent,
       // 订阅消息
       Subscribe(topics,kafkaParams))
+    val wordAndCount = stream.map(_.value()).flatMap(_.split(" ")).map((_, 1L)).reduceByKey(_ + _)
+    // 下面这一行没有数据生成
+    wordAndCount.print()
+
     // 处理每个微批的rdd
     stream.foreachRDD(rdd => {
       if(rdd != null && !rdd.isEmpty()){
@@ -77,7 +81,6 @@ object KafkaStreaming {
               // 这个就是接受到的数值对象
               println(record.offset() + "--" + record.key() + "--" + record.value())
               // 可以插入数据库，或者输出到别的地方
-              // 。 。 。
             }
           }
         })

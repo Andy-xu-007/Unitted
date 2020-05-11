@@ -34,7 +34,7 @@
     </property>
     <property>
       <name>javax.jdo.option.ConnectionDriverName</name>
-      <!--最新版本连接MySQL的jar包 所有写com.mysql.cj.jdbc.Driver,如果是旧版本用com.mysql.jdbc.Driver-->
+      <!--最新版本连接MySQL的jar包 所以写com.mysql.cj.jdbc.Driver,如果是旧版本用com.mysql.jdbc.Driver-->
       <value>com.mysql.cj.jdbc.Driver</value>
       <description>Driver class name for a JDBC metastore</description>
     </property>

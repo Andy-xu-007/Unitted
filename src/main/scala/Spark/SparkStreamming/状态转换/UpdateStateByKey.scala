@@ -9,15 +9,16 @@ object UpdateStateByKey {
     val sparkConf = new SparkConf().setMaster("local[*]").setAppName("UpdateStateByKey")
     val ssc = new StreamingContext(sparkConf, Seconds(3))
 
-    // 创建DStream
-    val lineDStream = ssc.socketTextStream("node3", 9999)
-
     // HDFS上
-    ssc.sparkContext.setCheckpointDir("./temp")
+    // sc.setCheckpointDir("hdfs://hadoop129:9000/spark_check_point_20191014_data")
+    ssc.sparkContext.setCheckpointDir("hdfs:///check_point")
+
+    // 创建DStream
+    val lineDStream = ssc.socketTextStream("namenode", 9999)
 
     val wordAndOne: DStream[(String, Int)] = lineDStream.flatMap(_.split(" ")).map((_, 1))
 
-    val update: (Seq[Int], Option[Int]) => Some[Int] = (values:Seq[Int], status:Option[Int]) => {
+    val update = (values:Seq[Int], status:Option[Int]) => {
       // 当前批次内容的计算
       val sum = values.sum
       // 取出状态信息中上一次状态

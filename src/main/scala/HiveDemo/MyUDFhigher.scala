@@ -3,7 +3,6 @@ package HiveDemo
 import java.util
 
 import org.apache.hadoop.hive.metastore.api.Date
-import org.apache.hadoop.hive.ql.exec.UDFArgumentException
 import org.apache.hadoop.hive.ql.udf.generic.GenericUDF
 import org.apache.hadoop.hive.serde2.objectinspector.{ObjectInspector, ObjectInspectorFactory, PrimitiveObjectInspector}
 import org.apache.hadoop.hive.serde2.objectinspector.primitive.PrimitiveObjectInspectorFactory
