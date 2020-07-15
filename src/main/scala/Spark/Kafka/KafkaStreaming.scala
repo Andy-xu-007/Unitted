@@ -5,7 +5,7 @@ import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord}
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.SparkConf
-import org.apache.spark.streaming.dstream.InputDStream
+import org.apache.spark.streaming.dstream.{DStream, InputDStream}
 import org.apache.spark.streaming.kafka010.{CanCommitOffsets, HasOffsetRanges, KafkaUtils, OffsetRange}
 import org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe
 import org.apache.spark.streaming.{Seconds, StreamingContext}
@@ -62,7 +62,7 @@ object KafkaStreaming {
       PreferConsistent,
       // 订阅消息
       Subscribe(topics,kafkaParams))
-    val wordAndCount = stream.map(_.value()).flatMap(_.split(" ")).map((_, 1L)).reduceByKey(_ + _)
+    val wordAndCount: DStream[(String, Long)] = stream.map(_.value()).flatMap(_.split(" ")).map((_, 1L)).reduceByKey(_ + _)
     // 下面这一行没有数据生成
     wordAndCount.print()
 

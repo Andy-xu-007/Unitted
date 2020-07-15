@@ -19,7 +19,7 @@ class JDBCSink(url:String, user:String, pwd:String) extends ForeachWriter[Row]{
   }
 
 
-  def process(value: Row): Unit = {
+  override def process(value: Row): Unit = {
     val searchName = value.getAs("titleName").toString.replaceAll("[\\[\\]]", "")
     val resultSet = statement.executeQuery("select 1 from test " +
         "where titleName = '" + searchName + "'")

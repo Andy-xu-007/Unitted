@@ -1,7 +1,7 @@
 package Spark.SparkStreamming.状态转换
 
 import org.apache.spark.SparkConf
-import org.apache.spark.streaming.dstream.DStream
+import org.apache.spark.streaming.dstream.{DStream, ReceiverInputDStream}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object UpdateStateByKey {
@@ -14,7 +14,7 @@ object UpdateStateByKey {
     ssc.sparkContext.setCheckpointDir("hdfs:///check_point")
 
     // 创建DStream
-    val lineDStream = ssc.socketTextStream("namenode", 9999)
+    val lineDStream: ReceiverInputDStream[String] = ssc.socketTextStream("namenode", 9999)
 
     val wordAndOne: DStream[(String, Int)] = lineDStream.flatMap(_.split(" ")).map((_, 1))
 
