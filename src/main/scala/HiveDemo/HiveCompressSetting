@@ -1,0 +1,16 @@
+shell中hadoop checknative 查看支持的压缩
+1）开启Hive最终查询结果输出文件压缩功能：
+hive> set hive.exec.compress.output=true;
+2）开启Hadoop中的MR任务的最终输出文件压缩：
+hive> set mapreduce.output.fileoutputformat.compress=true;
+3）设置Hadoop中MR任务的最终输出文件压缩算法（对应的编/解码器）：
+hive> set mapreduce.output.fileoutputformat.compress.codec=org.apache.hadoop.io.compress.SnappyCodec;
+4）设置Hadoop中MR任务序列化文件的压缩类型，默认为RECORD即按照记录RECORD级别压缩（建议设置成BLOCK）：
+hive> set mapreduce.output.fileoutputformat.compress.type=BLOCK;
+5）执行查询语句，观察执行结果文件（后缀名为.snappy）：
+hive> insert overwrite local directory '/tmp/hive/data/export/' ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' select * from emp;
+6）加载本地的缩数据文件到临时表中：
+hive> create table tmp like emp;
+hive> load data local inpath '/tmp/hive/data/export/000000_0.snappy' overwrite into table tmp;
+7）查询临时表结果
+hive> select * from tmp;

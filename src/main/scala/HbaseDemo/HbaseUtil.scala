@@ -12,8 +12,11 @@ class HbaseUtil {
   // 以下K值在hbase-site.xml文件中
   conf.set("hbase.zookeeper.quorum", "node1, node2, node3")
   conf.set("hbase.zookeeper.property.clientPort", "2181")
-  // conf.set ("zookeeper.znode.parent", "/hbase-unsecure") //看情况有时候要加有时候不加
+  // conf.set ("
+  //
+  // ", "/hbase-unsecure") //看情况有时候要加有时候不加
   // 获取hbase连接操作，创建连接对象
+
   private val connection: Connection = ConnectionFactory.createConnection(conf)
   // 获取hbase的客户端操作，管理员
   private val admin: Admin = connection.getAdmin
@@ -46,6 +49,8 @@ class HbaseUtil {
   /**
    * 扫描数据
    *
+   *
+   *
    * @param tableName  表名
    * @param cf         列族
    * @param qualifier  列限定符
@@ -60,7 +65,7 @@ class HbaseUtil {
     Try {
       val iterator = scanner.iterator()
       while (iterator.hasNext) {
-        val result = iterator.next()
+        val result: Result = iterator.next()
         println("Found row: " + result)
         println("Found value: " + Bytes.toString(
           result.getValue(cf.getBytes, qualifier.getBytes)
@@ -235,6 +240,7 @@ class HbaseUtil {
 //    // 插入数据
 //    table.put(put)
 //    table.close()
+
 
   }
 

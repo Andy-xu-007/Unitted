@@ -32,7 +32,7 @@ object adRank {
     val provinceToGroup: RDD[(String, Iterable[(String, Int)])] = provinceToADAndCount.groupByKey()
 
     // 排序，同时取前三，scala操作
-    val top3 = provinceToGroup.mapValues(x => {
+    val top3: RDD[(String, List[(String, Int)])] = provinceToGroup.mapValues(x => {
       x.toList.sortWith((a, b) => a._2 > b._2).take(3)
       // x.toList.sortBy(_._2).take(3)
     })

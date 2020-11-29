@@ -26,7 +26,7 @@ object KafkaStreaming {
     val groupID = "bigdata"
     val deserialization = "org.apache.kafka.common.serialization.StringDeserializer"
 
-    // 一下是基于spark-streaming-kafka-0-8的视频代码
+    // 一下是基于spark-streaming-kafka-0-8的代码
     /*    val kafkaParams = Map(
           ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG -> brokers,
           ConsumerConfig.GROUP_ID_CONFIG -> groupID,

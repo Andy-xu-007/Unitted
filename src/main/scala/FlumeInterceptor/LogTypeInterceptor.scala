@@ -9,7 +9,9 @@ import org.apache.flume.interceptor.Interceptor
 import collection.JavaConverters._
 import scala.collection.mutable.ArrayBuffer
 
-class LogTypeInterceptor extends Interceptor{
+class
+
+LogTypeInterceptor extends Interceptor{
   override def initialize(): Unit = {
 
   }
